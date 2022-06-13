@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="left-down" width="100" height="75" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="55">
+ <objectgroup id="2" name="game" locked="1">
+  <object id="4" type="wall" x="504" y="0" width="64" height="600"/>
+  <object id="5" type="wall" x="0" y="0" width="64" height="600"/>
+  <object id="6" type="wall" x="0" y="0" width="568" height="32"/>
+  <object id="8" type="ball" x="272" y="528" width="24" height="24"/>
+  <object id="9" type="bita" x="232" y="552" width="108" height="32"/>
+  <object id="10" name="level" type="text" x="672" y="184" width="112" height="24"/>
+  <object id="11" name="speed" type="text" x="688" y="229.5" width="96" height="24"/>
+  <object id="12" name="score" type="text" x="691" y="276" width="93" height="24"/>
+ </objectgroup>
+ <objectgroup id="3" name="lvl1" locked="1">
+  <object id="13" type="block-1" x="112" y="80" width="48" height="24"/>
+  <object id="14" type="block-1" x="184" y="80" width="48" height="24"/>
+  <object id="15" type="block-1" x="112" y="120" width="48" height="24"/>
+  <object id="16" type="block-1" x="184" y="120" width="48" height="24"/>
+  <object id="17" type="block-1" x="256" y="80" width="48" height="24"/>
+  <object id="18" type="block-1" x="328" y="80" width="48" height="24"/>
+  <object id="19" type="block-1" x="256" y="120" width="48" height="24"/>
+  <object id="20" type="block-1" x="328" y="120" width="48" height="24"/>
+  <object id="21" type="block-1" x="400" y="80" width="48" height="24"/>
+  <object id="22" type="block-1" x="400" y="120" width="48" height="24"/>
+  <object id="23" type="block-1" x="112" y="240" width="48" height="24"/>
+  <object id="24" type="block-1" x="184" y="240" width="48" height="24"/>
+  <object id="25" type="block-1" x="112" y="280" width="48" height="24"/>
+  <object id="26" type="block-1" x="184" y="280" width="48" height="24"/>
+  <object id="27" type="block-1" x="256" y="240" width="48" height="24"/>
+  <object id="28" type="block-1" x="328" y="240" width="48" height="24"/>
+  <object id="29" type="block-1" x="256" y="280" width="48" height="24"/>
+  <object id="30" type="block-1" x="328" y="280" width="48" height="24"/>
+  <object id="31" type="block-1" x="400" y="240" width="48" height="24"/>
+  <object id="32" type="block-1" x="400" y="280" width="48" height="24"/>
+  <object id="33" type="block-2" x="152" y="184" width="48" height="24"/>
+  <object id="34" type="block-2" x="216" y="184" width="48" height="24"/>
+  <object id="35" type="block-2" x="296" y="184" width="48" height="24"/>
+  <object id="36" type="block-2" x="360" y="184" width="48" height="24"/>
+ </objectgroup>
+ <objectgroup id="4" name="lvl2" visible="0" locked="1">
+  <object id="37" type="block-1" x="118" y="310" width="48" height="24"/>
+  <object id="38" type="block-2" x="152" y="160" width="48" height="24"/>
+  <object id="39" type="block-2" x="200" y="160" width="48" height="24"/>
+  <object id="40" type="block-2" x="152" y="184" width="48" height="24"/>
+  <object id="41" type="block-2" x="200" y="184" width="48" height="24"/>
+  <object id="42" type="block-2" x="314.667" y="187.333" width="48" height="24"/>
+  <object id="43" type="block-2" x="362.667" y="187.333" width="48" height="24"/>
+  <object id="44" type="block-2" x="314.667" y="211.333" width="48" height="24"/>
+  <object id="45" type="block-2" x="362.667" y="211.333" width="48" height="24"/>
+  <object id="46" type="block-2" x="256" y="272" width="48" height="24"/>
+  <object id="47" type="block-2" x="256" y="296" width="48" height="24"/>
+  <object id="48" type="block-1" x="155.333" y="350" width="48" height="24"/>
+  <object id="49" type="block-1" x="211.333" y="381.333" width="48" height="24"/>
+  <object id="50" type="block-1" x="269.333" y="394" width="48" height="24"/>
+  <object id="51" type="block-1" x="330.667" y="377.333" width="48" height="24"/>
+  <object id="52" type="block-1" x="385.333" y="348.667" width="48" height="24"/>
+  <object id="53" type="block-1" x="208" y="192" width="48" height="24"/>
+  <object id="54" type="block-1" x="309.333" y="216.667" width="48" height="24"/>
+ </objectgroup>
+</map>

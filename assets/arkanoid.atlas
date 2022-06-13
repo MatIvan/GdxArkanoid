@@ -1,0 +1,54 @@
+arkanoid.png
+size: 120, 152
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ball
+  rotate: false
+  xy: 0, 0
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+bita-1
+  rotate: false
+  xy: 0, 24
+  size: 108, 32
+  orig: 108, 32
+  offset: 0, 0
+  index: -1
+bita-2
+  rotate: false
+  xy: 0, 56
+  size: 108, 32
+  orig: 108, 32
+  offset: 0, 0
+  index: -1
+bita-3
+  rotate: false
+  xy: 0, 88
+  size: 108, 32
+  orig: 108, 32
+  offset: 0, 0
+  index: -1
+bita
+  rotate: false
+  xy: 0, 120
+  size: 108, 32
+  orig: 108, 32
+  offset: 0, 0
+  index: -1
+block-1
+  rotate: false
+  xy: 24, 0
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
+block-2
+  rotate: false
+  xy: 72, 0
+  size: 48, 24
+  orig: 48, 24
+  offset: 0, 0
+  index: -1
