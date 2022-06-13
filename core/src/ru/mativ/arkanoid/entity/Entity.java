@@ -34,6 +34,9 @@ public abstract class Entity {
     }
 
     public Rectangle getRectangle() {
+        if (type.hasSprite()) {
+            return sprite.getBoundingRectangle();
+        }
         return rectangle;
     }
 

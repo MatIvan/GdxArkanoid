@@ -1,85 +1,98 @@
 package ru.mativ.arkanoid;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.ScreenUtils;
 
+import ru.mativ.arkanoid.entity.Ball;
 import ru.mativ.arkanoid.entity.Entity;
+import ru.mativ.arkanoid.math.Collision;
+import ru.mativ.arkanoid.math.GeomUtils;
 
 public class Arkanoid extends ApplicationAdapter {
+    private static final String BACKGROUND = "background-game.png";
     private static final boolean DEBUG = true;
-    private static final String LEVEL_1_LAYER = "lvl1";
+    private static final String LEVEL_LAYER = "lvl";
     private static final String GAME_LAYER = "game";
     private static final String ASSETS_NAME = "arkanoid";
-    OrthographicCamera camera;
-    SpriteBatch batch;
-    ShapeRenderer shapeRenderer;
-    Loader loader;
 
-    Texture background;
+    private DrawTool drawTool;
+    private Loader loader;
 
-    List<Entity> entityList;
-    List<Entity> lvl1;
+    private List<Entity> entityList;
+    private List<Entity> blocks;
+
+    private List<Ball> balls;
 
     @Override
     public void create() {
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 600);
-        batch = new SpriteBatch();
-        shapeRenderer = new ShapeRenderer();
-        shapeRenderer.setAutoShapeType(true);
-        shapeRenderer.setColor(Color.BLUE);
-
+        Texture background = new Texture(Gdx.files.internal(BACKGROUND));
+        drawTool = new DrawTool(background);
         loader = new Loader(ASSETS_NAME);
         entityList = loader.createFromLayer(GAME_LAYER);
-        lvl1 = loader.createFromLayer(LEVEL_1_LAYER);
+        loadLevel(1);
 
-        background = new Texture(Gdx.files.internal("background-game.png"));
+        init();
+    }
+
+    private void init() {
+        balls = new ArrayList<Ball>();
+        for (Entity entity : entityList) {
+            switch (entity.getType()) {
+                case BALL:
+                    Ball ball = (Ball) entity;
+                    ball.setVelosity(100, 100);
+                    balls.add(ball);
+                    break;
+            }
+        }
+    }
+
+    private void loadLevel(int level) {
+        blocks = loader.createFromLayer(LEVEL_LAYER + String.valueOf(level));
     }
 
     @Override
     public void render() {
-        ScreenUtils.clear(0.8f, 0.8f, 0.8f, 1);
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
+        final float delta = Gdx.graphics.getDeltaTime();
 
-        batch.begin();
-        batch.draw(background, 0, 0);
-        for (Entity e : entityList) {
-            e.draw(batch);
+        for (Ball ball : balls) {
+            ball.update(delta);
+            updateCollisions(ball, entityList);
+            updateCollisions(ball, blocks);
         }
-        for (Entity e : lvl1) {
-            e.draw(batch);
-        }
-        batch.end();
 
+        drawTool.begin();
+        drawTool.draw(entityList);
+        drawTool.draw(blocks);
+        drawTool.end();
         if (DEBUG) {
-            debugDraw();
+            drawTool.debugBegin();
+            drawTool.debugDraw(entityList);
+            drawTool.debugDraw(blocks);
+            drawTool.debugEnd();
         }
     }
 
-    private void debugDraw() {
-        shapeRenderer.setProjectionMatrix(camera.combined);
-        shapeRenderer.begin();
-        for (Entity e : entityList) {
-            e.debugDraw(shapeRenderer);
+    private void updateCollisions(Ball ball, List<Entity> entityList) {
+        List<Collision> collisionList = GeomUtils.getCollisions(ball, entityList);
+        for (Collision collision : collisionList) {
+            ball.stepBack();
+            if (collision.isTop() || collision.isBottom()) {
+                ball.flipVelosityY();
+            }else
+            if (collision.isLeft() || collision.isRight()) {
+                ball.flipVelosityX();
+            }
         }
-        for (Entity e : lvl1) {
-            e.debugDraw(shapeRenderer);
-        }
-        shapeRenderer.end();
     }
 
     @Override
     public void dispose() {
-        batch.dispose();
+        drawTool.dispose();
         loader.dispose();
     }
 }
